@@ -13,12 +13,8 @@ import Html from "./Html";
 
 export default function App({ assets }) {
   return (
-    <Html assets={assets} title="Hello">
-      <Suspense fallback={"Loading"}>
-        <ErrorBoundary FallbackComponent={"Error"}>
-          <Content />
-        </ErrorBoundary>
-      </Suspense>
+    <Html>
+      <Content />
     </Html>
   );
 }

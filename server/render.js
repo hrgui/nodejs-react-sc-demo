@@ -16,7 +16,7 @@ import { API_DELAY, ABORT_DELAY } from "./delays";
 // In a real setup, you'd read it from webpack build stats.
 let assets = {
   "main.js": "/main.js",
-  "main.css": "/main.css"
+  "main.css": "/main.css",
 };
 
 module.exports = function render(url, res) {
@@ -43,16 +43,15 @@ module.exports = function render(url, res) {
     </DataProvider>,
     {
       bootstrapScripts: [assets["main.js"]],
-      onCompleteShell() {
-        // If something errored before we started streaming, we set the error code appropriately.
-        res.statusCode = didError ? 500 : 200;
+      onAllReady() {
+        res.statusCode = 200;
         res.setHeader("Content-type", "text/html");
         pipe(res);
       },
-      onError(x) {
+      onShellError(x) {
         didError = true;
         console.error(x);
-      }
+      },
     }
   );
   // Abandon and switch to client rendering if enough time passes.
@@ -82,6 +81,6 @@ function createServerData() {
         }, API_DELAY);
       });
       throw promise;
-    }
+    },
   };
 }
