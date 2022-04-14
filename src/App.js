@@ -1,19 +1,8 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-import { Suspense, lazy } from "react";
-import { ErrorBoundary } from "react-error-boundary";
 import Html from "./Html";
-// import Spinner from "./Spinner";
 
-export default function App({ assets }) {
+export default function App() {
   return (
-    <Html>
+    <Html title="Hello World">
       <Content />
     </Html>
   );
@@ -21,13 +10,4 @@ export default function App({ assets }) {
 
 function Content() {
   return <div>Hello World</div>;
-}
-
-function Error({ error }) {
-  return (
-    <div>
-      <h1>Application Error</h1>
-      <pre style={{ whiteSpace: "pre-wrap" }}>{error.stack}</pre>
-    </div>
-  );
 }

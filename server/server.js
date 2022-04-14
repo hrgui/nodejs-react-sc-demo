@@ -20,20 +20,9 @@ const compress = require("compression");
 const { readFileSync } = require("fs");
 const path = require("path");
 const render = require("./render");
-const { JS_BUNDLE_DELAY } = require("./delays");
 
 const PORT = process.env.PORT || 4000;
 const app = express();
-
-// app.use((req, res, next) => {
-//   if (req.url.endsWith('.js')) {
-//     // Artificially delay serving JS
-//     // to demonstrate streaming HTML.
-//     setTimeout(next, JS_BUNDLE_DELAY);
-//   } else {
-//     next();
-//   }
-// });
 
 app.use(compress());
 app.get(
