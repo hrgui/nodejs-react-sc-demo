@@ -5,7 +5,9 @@ export default function Html({ assets, children, title }) {
         <meta charSet="utf-8" />
         <title>{title}</title>
       </head>
-      <body>{children}</body>
+      <body>
+        <div id="root">{children}</div>
+      </body>
     </html>
   );
 }
